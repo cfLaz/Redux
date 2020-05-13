@@ -1,9 +1,9 @@
 //showing how to execute redux with Node.js
 /*It's independent from React*/
 
-const redux = require('redux');
-const createStore = redux.createStore;
-
+/* const redux = require('redux');
+const createStore = redux.createStore; */
+const createStore = require('redux').createStore; // I put it like this
 const initialState ={
     counter:0
 }
