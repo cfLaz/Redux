@@ -2,6 +2,7 @@ import React, { Component, } from 'react';
 import {connect} from 'react-redux'; //funtion that returns a HOC
 import CounterControl from '../../components/CounterControl/CounterControl';
 import CounterOutput from '../../components/CounterOutput/CounterOutput';
+import * as aT from './../../store/actions';
 
 class Counter extends Component {
  /*   state = {
@@ -37,10 +38,11 @@ class Counter extends Component {
                 <CounterControl label="Add 8" clicked={this.props.onAddCounter}  />
 
                 <CounterControl label="Subtract 7" clicked={this.props.onSubCounter} />
-                <button onClick={this.props.onStoreResult}>Store Result</button>
+
+                <button onClick={ () => this.props.onStoreResult(this.props.ctr)}>Store Result</button>
                 <ul>
                   {this.props.storedResults.map(strRes => (
-                      <li key={strRes.id}onClick={this.props.onDeleteResult}>{strRes.value}</li>
+                      <li key={strRes.id}onClick={() => this.props.onDeleteResult(strRes.id)}>{strRes.value}</li>
                   ))}
                 </ul>
             </div>
@@ -52,19 +54,19 @@ class Counter extends Component {
 const mapStateToProps = state => {
     return { //map of prop names and slices of the state stored in redux
         // will be executed by the react redux pckg bcz we will pass it to it
-        ctr: state.counter,
-        storedResults: state.results,
+        ctr: state.ctr.counter, //from rootReducer in index.js
+        storedResults: state.res.results,
     };
 }
 //What kind of actions we want to dispatch to this container
 const mapDispatchtoProps = dispatch => {
     return {//type is the only property that we need and its name cannot be changed
-        onIncCounter: () => dispatch({type: 'INCREMENT'}),
-        onDecCounter: () => dispatch({type: 'DECREMENT'}),
-        onAddCounter: () => dispatch({type: 'ADD', /* payload: {} */value:8, name: 'Laz'}),
-        onSubCounter: () => dispatch({type: 'SUBTRACT', value: 7}),
-        onStoreResult: () => dispatch({type: 'STORE_RESULT'}),
-        onDeleteResult: () => dispatch({type: 'DELETE_RESULT'})
+        onIncCounter: () => dispatch({type: aT.INCREMENT}),
+        onDecCounter: () => dispatch({type: aT.DECREMENT}),
+        onAddCounter: () => dispatch({type: aT.ADD, /* payload: {} */value:8, name: 'Laz'}),
+        onSubCounter: () => dispatch({type: aT.SUBTRACT, value: 7}),
+        onStoreResult: (result) => dispatch({type: aT.STORE_RESULT, result:result}),
+        onDeleteResult: (id) => dispatch({type: aT.DELETE_RESULT, resultElid: id})
 
     };
 
