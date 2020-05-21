@@ -1,5 +1,5 @@
 /* eslint-disable default-case */
-import * as actionTypes from '../actions'; // doing this because it's easier to find spelling errors
+import * as actionTypes from '../actions/actions'; // doing this because it's easier to find spelling errors
 
 const initialState = {
         results: [],

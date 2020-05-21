@@ -1,4 +1,4 @@
-import * as actionTypes from '../actions'; // doing this because it's easier to find mispell errors
+import * as actionTypes from '../actions/actions'; // doing this because it's easier to find mispell errors
 
 const initialState = {
     counter:0,

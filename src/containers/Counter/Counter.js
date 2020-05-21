@@ -2,8 +2,8 @@ import React, { Component, } from 'react';
 import {connect} from 'react-redux'; //funtion that returns a HOC
 import CounterControl from '../../components/CounterControl/CounterControl';
 import CounterOutput from '../../components/CounterOutput/CounterOutput';
-import * as aT from './../../store/actions';
-
+//import * as aT from '../../store/actions/actions';
+import  * as actionCreators from '../../store/actions/actions';
 class Counter extends Component {
  /*   state = {
         counter: 0
@@ -61,12 +61,13 @@ const mapStateToProps = state => {
 //What kind of actions we want to dispatch to this container
 const mapDispatchtoProps = dispatch => {
     return {//type is the only property that we need and its name cannot be changed
-        onIncCounter: () => dispatch({type: aT.INCREMENT}),
-        onDecCounter: () => dispatch({type: aT.DECREMENT}),
-        onAddCounter: () => dispatch({type: aT.ADD, /* payload: {} */value:8, name: 'Laz'}),
-        onSubCounter: () => dispatch({type: aT.SUBTRACT, value: 7}),
-        onStoreResult: (result) => dispatch({type: aT.STORE_RESULT, result:result}),
-        onDeleteResult: (id) => dispatch({type: aT.DELETE_RESULT, resultElid: id})
+        onIncCounter: () => dispatch(actionCreators.increment() ),
+        onDecCounter: () => dispatch(actionCreators.decrement() ),
+        onAddCounter: () => dispatch(actionCreators.add(8)),
+        onSubCounter: () => dispatch(actionCreators.subtract(7)),
+        //onStoreResult: (result) => dispatch({storeResult(), result:result}),
+        onStoreResult: (result) => dispatch(actionCreators.storeResult(result)),
+        onDeleteResult: (id) => dispatch(actionCreators.deleteResult(id))
 
     };
 
