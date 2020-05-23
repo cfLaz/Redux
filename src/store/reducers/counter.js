@@ -1,4 +1,4 @@
-import * as actionTypes from '../actions/actions'; // doing this because it's easier to find mispell errors
+import * as actionTypes from '../actions/actionTypes'; // doing this because it's easier to find mispell errors
 
 const initialState = {
     counter:0,
@@ -21,12 +21,12 @@ const reducer = (state = initialState, action) => {
         case actionTypes.ADD:
             return {
                 ...state,
-                counter:state.counter + action.value
+                counter:state.counter + action.val
             }
         case actionTypes.SUBTRACT:
             return {
                 ...state,
-                counter:state.counter -action.value
+                counter:state.counter -action.val
             }
         }
     return state;

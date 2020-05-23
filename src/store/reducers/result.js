@@ -1,5 +1,5 @@
 /* eslint-disable default-case */
-import * as actionTypes from '../actions/actions'; // doing this because it's easier to find spelling errors
+import * as actionTypes from '../actions/actionTypes'; // doing this because it's easier to find spelling errors
 
 const initialState = {
         results: [],
@@ -13,7 +13,7 @@ const reducer = (state = initialState, action) => {
         case actionTypes.STORE_RESULT:
             return {    
                 ...state, //concat is same as push except it gives a new array (doing it here because of immutability)
-                results: state.results.concat({id: new Date(), value: action.result}),
+                results: state.results.concat({id: new Date(), value: action.result /2}), //changing in reducer because sometimes we want to change the value before we pass it on
             };
 
         case actionTypes.DELETE_RESULT:

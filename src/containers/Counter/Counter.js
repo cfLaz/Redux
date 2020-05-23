@@ -3,7 +3,7 @@ import {connect} from 'react-redux'; //funtion that returns a HOC
 import CounterControl from '../../components/CounterControl/CounterControl';
 import CounterOutput from '../../components/CounterOutput/CounterOutput';
 //import * as aT from '../../store/actions/actions';
-import  * as actionCreators from '../../store/actions/actions';
+import  * as actionCreators from '../../store/actions/indexA';
 class Counter extends Component {
  /*   state = {
         counter: 0
