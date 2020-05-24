@@ -1,4 +1,5 @@
 import * as actionTypes from '../actions/actionTypes'; // doing this because it's easier to find mispell errors
+import updateObject from '../utility';
 
 const initialState = {
     counter:0,
@@ -24,10 +25,8 @@ const reducer = (state = initialState, action) => {
                 counter:state.counter + action.val
             }
         case actionTypes.SUBTRACT:
-            return {
-                ...state,
-                counter:state.counter -action.val
-            }
+            // a bit leaner as Max claims
+            return updateObject(state, {counter: state.counter - action.val});
         }
     return state;
 };

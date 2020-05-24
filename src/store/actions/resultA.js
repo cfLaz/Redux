@@ -12,7 +12,7 @@ export const storeResult= (res) => {
             //by redux thunk
     return (dispatch, getState) => { 
         
-        setTimeout( () => {
+        setTimeout( () => { //getState() gets our complete state
             const oldCounter = getState().ctr.counter; //don't overuse
             console.log(oldCounter);
             dispatch(saveResult(res))
